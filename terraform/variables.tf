@@ -22,7 +22,7 @@ variable "zone" {
 variable "zones" {
   description = "Network zones"
   type        = list(string)
-  default = ["ru-central1-a", "ru-central1-b", "ru-central1-c"]
+  default = ["ru-central1-a", "ru-central1-b", "ru-central1-d"]
 }
 
 variable "image_family" {

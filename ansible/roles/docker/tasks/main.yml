@@ -1,6 +1,6 @@
 ---
 # apt update
-- name: Run the equivalent of "apt-get update"
+- name: Install curl
   ansible.builtin.apt:
     update_cache: yes
     name: curl
@@ -17,16 +17,13 @@
     append: true
   notify: Restart Docker service
 
-# - name: Add user "test" to run Docker
-#   shell: "chown test:docker /var/run/docker.sock"
-#   become: true
 
 # Docker remove config
-- name: Docker remove config
-  ansible.builtin.file:
-    path: /etc/docker/daemon.json
-    state: absent
-  notify: Restart Docker service
+# - name: Docker remove config
+#   ansible.builtin.file:
+#     path: /etc/docker/daemon.json
+#     state: absent
+#   notify: Restart Docker service
 
 # Docker config set mirrors
 # - name: Docker config set mirrors

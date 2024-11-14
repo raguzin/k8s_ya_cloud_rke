@@ -26,6 +26,7 @@ resource "yandex_compute_instance" "vm" {
   boot_disk {
       initialize_params {
           image_id = "${data.yandex_compute_image.my_image.image_id}"
+          size     =  20
       }
   }
 
@@ -42,18 +43,18 @@ resource "yandex_compute_instance" "vm" {
       user-data = file(var.new_user)
   }
 
-  # provisioner "local-exec" {
-  #   working_dir = "../ansible/"
-  #   command     = "sleep 90 && ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook playbook.yml -i '${self.network_interface.0.nat_ip_address},' -u test --private-key ${var.private_key_file}"
+  provisioner "local-exec" {
+    working_dir = "../ansible/"
+    command     = "sleep 60 && ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook playbook.yml -i '${self.network_interface.0.nat_ip_address},' -u test --private-key ${var.private_key_file}"
 
-  #   connection {
-  #     type        = "ssh"
-  #     user        = "test"
-  #     # agent       = true
-  #     private_key = "${file(var.private_key_file)}"
-  #     host        = "${self.network_interface.0.nat_ip_address}"
-  #   }
-  # }
+    connection {
+      type        = "ssh"
+      user        = "test"
+      # agent       = true
+      private_key = "${file(var.private_key_file)}"
+      host        = "${self.network_interface.0.nat_ip_address}"
+    }
+  }
 }
 
 resource "local_file" "rke_cluster_yml" {

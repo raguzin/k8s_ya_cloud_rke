@@ -1,3 +1,5 @@
+# https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration
+
 cluster_name: k8s-cluster
 name: k8s-cluster
 enable_cluster_alerting: false
