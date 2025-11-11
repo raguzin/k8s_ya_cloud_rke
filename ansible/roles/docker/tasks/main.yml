@@ -7,7 +7,7 @@
 
 # Docker install
 - name: Docker install
-  shell: "curl https://get.docker.com -o install.sh && sh install.sh"
+  shell: "curl https://get.docker.com -o install.sh && sh install.sh --version 27.0"
 
 # Add user test to run Docker
 - name: Add user "test" to run Docker
