@@ -27,6 +27,9 @@ nodes:
 %{ endif ~}
 %{ endfor ~}
 
+system_images:
+  kubernetes: rancher/hyperkube:v1.32.6-rancher1
+
 services:
   etcd:
     snapshot: true
